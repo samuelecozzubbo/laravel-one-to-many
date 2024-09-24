@@ -14,6 +14,7 @@
     <form action="{{ route('admin.projects.update', $project) }}" method="POST">
         @csrf <!-- Token CSRF necessario per protezione -->
         @method('PUT')
+        {{-- Title --}}
         <div class="form-group">
             <label for="title">Titolo</label>
             <input value="{{ old('title', $project->title) }}" type="text" name="title" id="title"
@@ -23,6 +24,7 @@
             @enderror
         </div>
 
+        {{-- Description --}}
         <div class="form-group">
             <label for="txt">Descrizione</label>
             <textarea name="description" id="description" class="@error('description') is-invalid @enderror form-control"
@@ -32,6 +34,7 @@
             @enderror
         </div>
 
+        {{-- Start date --}}
         <div class="form-group">
             <label for="reading_time">Data di inizio</label>
             <input value="{{ old('start_date', $project->start_date) }}" type="string" name="start_date" id="start_date"
@@ -41,6 +44,7 @@
             @enderror
         </div>
 
+        {{-- End date --}}
         <div class="form-group">
             <label for="end_date">Data di fine</label>
             <input value="{{ old('end_date', $project->end_date) }}" type="string" name="end_date" id="end_date"
@@ -50,6 +54,7 @@
             @enderror
         </div>
 
+        {{-- Collaborators --}}
         <div class="form-group">
             <label for="collaborators">Numero di collaboratori</label>
             <input value="{{ old('collaborators', $project->collaborators) }}" type="number" name="collaborators"
@@ -59,6 +64,20 @@
             @enderror
         </div>
 
+        {{-- Tipo --}}
+        <div class="form-group">
+            <label for="type">Tipo</label>
+            <select class="form-select" aria-label="Default select example" id="type" name="type_id">
+                <option value="">Seleziona un tipo di progetto</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) == $type->id) selected @endif>
+                        {{ $type->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        {{-- Img --}}
         <div class="form-group">
             <label for="img">URL Immagine</label>
             <input value="{{ old('img', $project->img) }}" type="url" name="img" id="img"
