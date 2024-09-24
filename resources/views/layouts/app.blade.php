@@ -26,7 +26,9 @@
     <div id="app">
         @include('admin.partials.header')
         <div class="main-wrapper d-flex">
-            @include('admin.partials.aside')
+            @auth
+                @include('admin.partials.aside')
+            @endauth
             <div class="content">
                 @yield('content')
             </div>
