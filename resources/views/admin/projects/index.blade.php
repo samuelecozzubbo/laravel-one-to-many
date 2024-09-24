@@ -15,6 +15,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Start Date</th>
                 <th scope="col">End Date</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -25,6 +26,16 @@
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->start_date }}</td>
                     <td>{{ $project->end_date }}</td>
+                    <td>
+                        @if ($project->type)
+                            <span class="badge bg-success">
+                                {{ $project->type->name }}
+                            </span>
+                        @else
+                            -
+                        @endif
+                    </td>
+
                     <td>
                         <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-info">
                             <i class="fa-solid fa-eye"></i>

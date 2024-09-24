@@ -14,7 +14,7 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
-    protected $fillable = ['title', 'description', 'start_date', 'end_date', 'collaborators', 'img', 'slug'];
+    protected $fillable = ['type_id', 'title', 'description', 'start_date', 'end_date', 'collaborators', 'img', 'slug'];
     protected $casts = [
         'created_at' => 'datetime:d/m/Y',
     ];

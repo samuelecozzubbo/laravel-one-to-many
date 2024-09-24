@@ -10,6 +10,7 @@
         <p>Start Date: {{ $project->start_date }}</p>
         <p>End Date: {{ $project->end_date }}</p>
         <p>Collaborators: {{ $project->collaborators }}</p>
+        <p>Categoria: {{ $project->type ? $project->type->name : 'Nessuna categoria' }}</p>
         @if ($project->img)
             <img src="{{ $project->img }}" alt="{{ $project->title }}">
         @endif
